@@ -14,7 +14,7 @@ public class menuClientes {
 	private Clientes cli = new Clientes();
 	private String opcion;
 	private int sel;
-	public static Scanner keyboard;
+	public  Scanner keyboard;
 	private static menuClientes instance;
 
 	public menuClientes() {
@@ -31,6 +31,7 @@ public class menuClientes {
 	public static menuClientes menu = new menuClientes();
 
 	public void display() {
+		keyboard = new Scanner(System.in);
 
 		do {
 			System.out.println("~~~~~~~~~~MENÚ CLIENTES~~~~~~~~~\n");
