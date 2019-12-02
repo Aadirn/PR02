@@ -22,7 +22,7 @@ public class menuController {
 		return instance;
 	}
 	
-	public void elegirObj() {
+	public void elegirCosa() {
 		
 		//lista=obj.list();
 		

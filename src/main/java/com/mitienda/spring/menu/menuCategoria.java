@@ -33,8 +33,6 @@ public class menuCategoria {
 
 	public void display() {
 
-		categorias = ctr.list();
-
 		keyboard = new Scanner(System.in);
 		do {
 			System.out.println("~~~~~~~~~~MEN� CATEGORIA~~~~~~~~~\n");

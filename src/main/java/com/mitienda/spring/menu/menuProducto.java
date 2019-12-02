@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.mitienda.spring.controllers.CategoryController;
 import com.mitienda.spring.controllers.ProductoController;
+import com.mitienda.spring.models.Categoria;
 import com.mitienda.spring.models.Producto;
 import com.mitienda.spring.models.comun.Tools;
 
@@ -15,9 +17,11 @@ public class menuProducto {
 	private int sel;
 
 	private List<Producto> productos = new ArrayList<>();
+	private List<Categoria> cat = new ArrayList<>();
 	private Producto prod = new Producto();
 	private static menuProducto instance;
-	private ProductoController ctr = ProductoController.getInstance();
+	private ProductoController ctrP = ProductoController.getInstance();
+	private CategoryController ctrC = CategoryController.getInstance();
 
 	private menuProducto() {
 	}
@@ -30,8 +34,6 @@ public class menuProducto {
 	}
 
 	public void display() {
-
-		productos = ctr.list();
 
 		keyboard = new Scanner(System.in);
 		do {
@@ -75,7 +77,7 @@ public class menuProducto {
 
 	private void listProd() {
 
-		productos = ctr.list();
+		productos = ctrP.list();
 
 		for (int i = 0; i < productos.size(); i++) {
 			System.out.println(productos.get(i).getId() + ".-" + productos.get(i) + "\n");
@@ -93,10 +95,14 @@ public class menuProducto {
 		prod.setStock(Integer.parseInt(keyboard.nextLine()));
 		keyboard.reset();
 		System.out.println("Seleccione a que categoria pertenece el producto");
-		// menuCategoria.getInstance().listCat();
-		// prod.setId_categoria();
-		// HACER LO DEL MENUCONTROLLER PREGUNTANDO A JIORCH
-		ctr.save(prod);
+		cat=ctrC.list();
+		for (int i = 0; i < cat.size(); i++) {
+			System.out.println(cat.get(i).getId() + ".-" + cat.get(i) + "\n");
+		}
+		opcion=keyboard.nextLine();
+		sel = Integer.valueOf(opcion);
+		prod.setId_categoria(sel);
+		ctrP.save(prod);
 
 	}
 
@@ -106,8 +112,8 @@ public class menuProducto {
 		opcion = keyboard.nextLine();
 		sel = Integer.valueOf(opcion);
 
-		prod = ctr.findById((long) sel);
-		ctr.delete(prod);
+		prod = ctrP.findById((long) sel);
+		ctrP.delete(prod);
 	}
 
 	private void actualizarProd() {
@@ -115,7 +121,7 @@ public class menuProducto {
 		listProd();
 		opcion = keyboard.nextLine();
 		sel = Integer.valueOf(opcion);
-		prod = ctr.findById((long) sel);
+		prod = ctrP.findById((long) sel);
 		String teclado;
 		do {
 			System.out.println("¿Que quieres cambiar?");
@@ -146,13 +152,19 @@ public class menuProducto {
 				break;
 			case 4:
 				System.out.println("Seleccione la nueva categoria de este producto: \n");
-				// prod.setId_categoria(menuController.getInstance().elegirObj(new
-				// Categoria()).getId());
+				cat=ctrC.list();
+				for (int i = 0; i < cat.size(); i++) {
+					System.out.println(cat.get(i).getId() + ".-" + cat.get(i) + "\n");
+				}
+				opcion=keyboard.nextLine();
+				sel = Integer.valueOf(opcion);
+				prod.setId_categoria(sel);
+				ctrP.save(prod);
 
 				break;
 			case 5:
 				System.out.println("Guardando...\n");
-				ctr.save(prod);
+				ctrP.save(prod);
 				break;
 			case 6:
 				System.out.println("Volviendo a Menú Productos\n");

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.mitienda.spring.controllers.FacturaController;
 import com.mitienda.spring.controllers.FacturaLineaController;
+import com.mitienda.spring.models.Factura;
 import com.mitienda.spring.models.FacturaLinea;
 import com.mitienda.spring.models.comun.Tools;
 
@@ -15,8 +17,10 @@ public class menuFacturaLinea {
 	private int sel;
 
 	private List<FacturaLinea> facturasLin = new ArrayList<>();
+	private List<Factura> facturas = new ArrayList<>();
 	private FacturaLinea factLin = new FacturaLinea();
-	private FacturaLineaController ctr = FacturaLineaController.getInstance();
+	private FacturaLineaController ctrFL = FacturaLineaController.getInstance();
+	private FacturaController ctrF = FacturaController.getInstance();
 
 	private static menuFacturaLinea instance;
 
@@ -31,8 +35,6 @@ public class menuFacturaLinea {
 	}
 
 	public void display() {
-
-		facturasLin = ctr.list();
 
 		keyboard = new Scanner(System.in);
 		do {
@@ -76,7 +78,7 @@ public class menuFacturaLinea {
 
 	private void listFactLin() {
 
-		facturasLin = ctr.list();
+		facturasLin = ctrFL.list();
 
 		for (int i = 0; i < facturasLin.size(); i++) {
 			System.out.println(facturasLin.get(i).getId() + ".-" + facturasLin.get(i) + "\n");
@@ -84,9 +86,15 @@ public class menuFacturaLinea {
 	}
 
 	private void createFactLin() {// TODO: COMPROBACIONES DE TODO
+		
 		System.out.println("Selecciona el ID de la factura a la que pertenece\n");
-		// factLin.setId_factura(menuController.getInstance().elegirObj(new
-		// Factura()).getId());
+		facturas=ctrF.list();
+		for (int i = 0; i < facturas.size(); i++) {
+			System.out.println(facturas.get(i).getId() + ".-" + facturas.get(i) + "\n");
+		}
+		opcion=keyboard.nextLine();
+		sel = Integer.valueOf(opcion);
+		factLin.setId_factura(sel);
 		System.out.println("Escriba el nombre de esta factura linea");
 		factLin.setNombre(keyboard.nextLine());
 		keyboard.reset();
@@ -94,7 +102,7 @@ public class menuFacturaLinea {
 		factLin.setPrecio(Integer.valueOf(keyboard.nextLine()));
 		keyboard.reset();
 
-		ctr.save(factLin);
+		ctrFL.save(factLin);
 
 	}
 
@@ -104,8 +112,8 @@ public class menuFacturaLinea {
 		opcion = keyboard.nextLine();
 		sel = Integer.valueOf(opcion);
 
-		factLin = ctr.findById((long) sel);
-		ctr.delete(factLin);
+		factLin = ctrFL.findById((long) sel);
+		ctrFL.delete(factLin);
 	}
 
 	private void actualizarFactLin() {
@@ -113,7 +121,7 @@ public class menuFacturaLinea {
 		listFactLin();
 		opcion = keyboard.nextLine();
 		sel = Integer.valueOf(opcion);
-		factLin = ctr.findById((long) sel);
+		factLin = ctrFL.findById((long) sel);
 		do {
 			System.out.println("�Que quieres cambiar?");
 			System.out.println("1.-ID\n2.-Nombre\n3.-Precio\n4.-Guardar Cambios\n5.-Atr�s\n");
@@ -123,8 +131,13 @@ public class menuFacturaLinea {
 			switch (sel) {
 			case 1:
 				System.out.println("Seleccione el nuevo ID al que pertenece: \n");
-				// factLin.setId_factura(menuController.getInstance().elegirObj(new
-				// FacturaLinea()).getId());
+				facturas=ctrF.list();
+				for (int i = 0; i < facturas.size(); i++) {
+					System.out.println(facturas.get(i).getId() + ".-" + facturas.get(i) + "\n");
+				}
+				opcion=keyboard.nextLine();
+				sel = Integer.valueOf(opcion);
+				factLin.setId_factura(sel);
 				break;
 			case 2:
 				System.out.println("Escriba el nuevo nombre: \n");
@@ -142,7 +155,7 @@ public class menuFacturaLinea {
 				break;
 			case 4:
 				System.out.println("Guardando...\n");
-				ctr.save(factLin);
+				ctrFL.save(factLin);
 				break;
 			case 5:
 				System.out.println("Volviendo a Men� Factura Linea\n");

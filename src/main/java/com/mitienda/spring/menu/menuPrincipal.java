@@ -45,6 +45,7 @@ public class menuPrincipal {
 				break;
 			case 5:
 				System.out.println("Has elegido Factura Lineas");
+				menuFacturaLinea.getInstance().display();
 				break;
 			case 6:
 				System.out.println("Has elegido Salir");

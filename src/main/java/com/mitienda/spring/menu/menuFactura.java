@@ -32,7 +32,6 @@ public class menuFactura {
 	}
 
 	public void display() {
-		facturas = ctr.list();
 
 		keyboard = new Scanner(System.in);
 
