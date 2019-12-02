@@ -10,7 +10,7 @@ import com.mitienda.spring.models.comun.Tools;
 
 
 
-public class menuCategoria {
+public class MenuCategoria {
 
 	private String opcion;
 	private Scanner keyboard;
@@ -18,15 +18,15 @@ public class menuCategoria {
 
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	private Categoria cat = new Categoria();
-	private static menuCategoria instance;
+	private static MenuCategoria instance;
 	private CategoryController ctr = CategoryController.getInstance();
 
-	private menuCategoria() {
+	private MenuCategoria() {
 	}
 
-	public static menuCategoria getInstance() {
+	public static MenuCategoria getInstance() {
 		if (instance == null) {
-			instance = new menuCategoria();
+			instance = new MenuCategoria();
 		}
 		return instance;
 	}
@@ -64,7 +64,7 @@ public class menuCategoria {
 					break;
 				case 5:
 					System.out.println("Atras\n");
-					menuPrincipal.getInstance().display();
+					MenuPrincipal.getInstance().display();
 					break;
 				default:
 					System.out.println("ACCION NO VALIDA!\n");

@@ -8,27 +8,27 @@ import com.mitienda.spring.controllers.ClienteController;
 import com.mitienda.spring.models.Clientes;
 import com.mitienda.spring.models.comun.Tools;
 
-public class menuClientes {
+public class MenuClientes {
 	private List<Clientes> clientesLista = new ArrayList<>();
 	private ClienteController ctr = ClienteController.getInstance();
 	private Clientes cli = new Clientes();
 	private String opcion;
 	private int sel;
 	public  Scanner keyboard;
-	private static menuClientes instance;
+	private static MenuClientes instance;
 
-	public menuClientes() {
+	public MenuClientes() {
 
 	}
 
-	public static menuClientes getInstance() {
+	public static MenuClientes getInstance() {
 		if (instance == null) {
-			instance = new menuClientes();
+			instance = new MenuClientes();
 		}
 		return instance;
 	}
 
-	public static menuClientes menu = new menuClientes();
+	public static MenuClientes menu = new MenuClientes();
 
 	public void display() {
 		keyboard = new Scanner(System.in);
@@ -63,7 +63,7 @@ public class menuClientes {
 					break;
 				case 5:
 					System.out.println("Atras\n");
-					menuPrincipal.getInstance().display();
+					MenuPrincipal.getInstance().display();
 					break;
 				default:
 					System.out.println("ACCION NO VALIDA!\n");
@@ -139,7 +139,7 @@ public class menuClientes {
 				break;
 			case 7:
 				System.out.println("Volviendo a Menú Clientes\n");
-				menuClientes.getInstance().display();
+				MenuClientes.getInstance().display();
 				break;
 			default:
 				break;

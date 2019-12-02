@@ -6,10 +6,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.mitienda.spring.menu.menuPrincipal;
+import com.mitienda.spring.menu.MenuPrincipal;
 
 @SpringBootApplication
-public class StartApplication extends menuPrincipal implements CommandLineRunner {
+public class StartApplication extends MenuPrincipal implements CommandLineRunner {
 
 	private static final Logger log = LoggerFactory.getLogger(StartApplication.class);
 
@@ -25,7 +25,7 @@ public class StartApplication extends menuPrincipal implements CommandLineRunner
 		 * Aqui controlar los Menus y el cambio entre ellos. Y En cada menu; usar su
 		 * respectivo Controller y Repository
 		 */
-		menuPrincipal.getInstance().display();
+		MenuPrincipal.getInstance().display();
 
 	}
 

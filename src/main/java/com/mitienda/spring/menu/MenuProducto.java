@@ -10,7 +10,7 @@ import com.mitienda.spring.models.Categoria;
 import com.mitienda.spring.models.Producto;
 import com.mitienda.spring.models.comun.Tools;
 
-public class menuProducto {
+public class MenuProducto {
 
 	private String opcion;
 	private Scanner keyboard;
@@ -19,16 +19,16 @@ public class menuProducto {
 	private List<Producto> productos = new ArrayList<>();
 	private List<Categoria> cat = new ArrayList<>();
 	private Producto prod = new Producto();
-	private static menuProducto instance;
+	private static MenuProducto instance;
 	private ProductoController ctrP = ProductoController.getInstance();
 	private CategoryController ctrC = CategoryController.getInstance();
 
-	private menuProducto() {
+	private MenuProducto() {
 	}
 
-	public static menuProducto getInstance() {
+	public static MenuProducto getInstance() {
 		if (instance == null) {
-			instance = new menuProducto();
+			instance = new MenuProducto();
 		}
 		return instance;
 	}
@@ -66,7 +66,7 @@ public class menuProducto {
 					break;
 				case 5:
 					System.out.println("Atras\n");
-					menuPrincipal.getInstance().display();
+					MenuPrincipal.getInstance().display();
 					break;
 				default:
 					System.out.println("ACCION NO VALIDA!\n");
@@ -168,7 +168,7 @@ public class menuProducto {
 				break;
 			case 6:
 				System.out.println("Volviendo a Menú Productos\n");
-				menuProducto.getInstance().display();
+				MenuProducto.getInstance().display();
 				break;
 			default:
 				break;

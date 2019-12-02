@@ -2,15 +2,15 @@ package com.mitienda.spring.menu;
 
 import java.util.Scanner;
 
-public class menuPrincipal {
+public class MenuPrincipal {
 	private int opcion;
 	private Scanner keyboard;
 
-	private static menuPrincipal instance;
+	private static MenuPrincipal instance;
 
-	public static menuPrincipal getInstance() {
+	public static MenuPrincipal getInstance() {
 		if (instance == null) {
-			instance = new menuPrincipal();
+			instance = new MenuPrincipal();
 		}
 		return instance;
 	}
@@ -29,23 +29,23 @@ public class menuPrincipal {
 			switch (opcion) {
 			case 1:
 				System.out.println("Has elegido Productos");
-				menuProducto.getInstance().display();
+				MenuProducto.getInstance().display();
 				break;
 			case 2:
 				System.out.println("Has elegido Clientes");
-				menuClientes.getInstance().display();
+				MenuClientes.getInstance().display();
 				break;
 			case 3:
 				System.out.println("Has elegido Categorias");
-				menuCategoria.getInstance().display();
+				MenuCategoria.getInstance().display();
 				break;
 			case 4:
 				System.out.println("Has elegido Facturas");
-				menuFactura.getInstance().display();
+				MenuFactura.getInstance().display();
 				break;
 			case 5:
 				System.out.println("Has elegido Factura Lineas");
-				menuFacturaLinea.getInstance().display();
+				MenuFacturaLinea.getInstance().display();
 				break;
 			case 6:
 				System.out.println("Has elegido Salir");

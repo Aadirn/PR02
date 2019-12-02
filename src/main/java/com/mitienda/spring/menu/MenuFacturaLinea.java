@@ -10,7 +10,7 @@ import com.mitienda.spring.models.Factura;
 import com.mitienda.spring.models.FacturaLinea;
 import com.mitienda.spring.models.comun.Tools;
 
-public class menuFacturaLinea {
+public class MenuFacturaLinea {
 
 	private String opcion;
 	private Scanner keyboard;
@@ -22,14 +22,14 @@ public class menuFacturaLinea {
 	private FacturaLineaController ctrFL = FacturaLineaController.getInstance();
 	private FacturaController ctrF = FacturaController.getInstance();
 
-	private static menuFacturaLinea instance;
+	private static MenuFacturaLinea instance;
 
-	private menuFacturaLinea() {
+	private MenuFacturaLinea() {
 	}
 
-	public static menuFacturaLinea getInstance() {
+	public static MenuFacturaLinea getInstance() {
 		if (instance == null) {
-			instance = new menuFacturaLinea();
+			instance = new MenuFacturaLinea();
 		}
 		return instance;
 	}
@@ -67,7 +67,7 @@ public class menuFacturaLinea {
 					break;
 				case 5:
 					System.out.println("Atras\n");
-					menuPrincipal.getInstance().display();
+					MenuPrincipal.getInstance().display();
 					break;
 				default:
 					System.out.println("ACCION NO VALIDA!\n");
@@ -159,7 +159,7 @@ public class menuFacturaLinea {
 				break;
 			case 5:
 				System.out.println("Volviendo a Men� Factura Linea\n");
-				menuFacturaLinea.getInstance().display();
+				MenuFacturaLinea.getInstance().display();
 				break;
 			default:
 				break;

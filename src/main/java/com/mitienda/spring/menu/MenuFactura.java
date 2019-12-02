@@ -10,7 +10,7 @@ import com.mitienda.spring.controllers.FacturaController;
 import com.mitienda.spring.models.Factura;
 import com.mitienda.spring.models.comun.Tools;
 
-public class menuFactura {
+public class MenuFactura {
 
 	List<Factura> facturas = new ArrayList<>();
 	Factura fac = new Factura();
@@ -19,14 +19,14 @@ public class menuFactura {
 	private int sel;
 	private FacturaController ctr = FacturaController.getInstance();
 
-	private static menuFactura instance;
+	private static MenuFactura instance;
 
-	public menuFactura() {
+	public MenuFactura() {
 	}
 
-	public static menuFactura getInstance() {
+	public static MenuFactura getInstance() {
 		if (instance == null) {
-			instance = new menuFactura();
+			instance = new MenuFactura();
 		}
 		return instance;
 	}
@@ -65,7 +65,7 @@ public class menuFactura {
 					break;
 				case 5:
 					System.out.println("Has elegido volver al Menu Principal");
-					menuPrincipal.getInstance().display();
+					MenuPrincipal.getInstance().display();
 					break;
 				default:
 					break;
@@ -122,7 +122,7 @@ public class menuFactura {
 				break;
 			case 5:
 				System.out.println("Volviendo a Menú Facturas\n");
-				menuFactura.getInstance().display();
+				MenuFactura.getInstance().display();
 				break;
 			default:
 				break;
